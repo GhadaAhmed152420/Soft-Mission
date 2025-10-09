@@ -176,11 +176,7 @@ class _UploadAssignmentBottomsheetContainerState
                   _addFiles();
                 },
                 child: DottedBorder(
-                  borderType: BorderType.RRect,
-                  dashPattern: const [10, 10],
-                  radius: const Radius.circular(15.0),
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+                  options: RectDottedBorderOptions(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3)),
                   child: Container(
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width * (0.8),

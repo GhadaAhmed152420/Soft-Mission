@@ -125,7 +125,7 @@ class TeachersEvaluationContainerState
                     height: 15,
                   ),
                   EmojiFeedback(
-                    rating: ratings[index],
+                    initialRating: ratings[index],
                     customLabels: [
                       UiUtils.getTranslatedLabel(context, veryBadKey),
                       UiUtils.getTranslatedLabel(context, badKey),
