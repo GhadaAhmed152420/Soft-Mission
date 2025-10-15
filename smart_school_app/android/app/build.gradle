@@ -2,7 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-    // id "com.google.gms.google-services"
+    id "com.google.gms.google-services"
 }
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -33,6 +33,7 @@ def keystoreProperties = new Properties()
    }
 
 android {
+    namespace = "com.example.smart_school_app" 
     compileSdkVersion 36
 
     compileOptions {
@@ -51,7 +52,7 @@ android {
     defaultConfig {
         applicationId "com.puresoft.smartschool"
         minSdkVersion flutter.minSdkVersion
-        targetSdkVersion 35
+        targetSdkVersion 36
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
