@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:image_picker/image_picker.dart';
 
 enum AttachmentFileSelectionType {
   camera,
@@ -52,22 +51,34 @@ class _AttachmentDialogWidgetState extends State<AttachmentDialogWidget> {
           tempPaths = result.files.map((e) => e.path ?? "").toList();
         }
       } else if (selectionType == AttachmentFileSelectionType.gallery) {
-        //gallery picking logic
-        final ImagePicker picker = ImagePicker();
-        final result = await picker.pickMultiImage();
-        if (result.isNotEmpty) {
-          tempPaths = result.map<String>((e) => e.path).toList();
+        //gallery picking logic using FilePicker for images
+        FilePickerResult? result = await FilePicker.platform.pickFiles(
+          allowMultiple: true,
+          type: FileType.custom,
+          allowedExtensions: ['jpg', 'jpeg', 'png', 'gif', 'heic', 'webp'],
+        );
+        if (result != null) {
+          tempPaths = result.files
+              .map((e) => e.path ?? "")
+              .where((p) => p.isNotEmpty)
+              .toList();
         }
       } else {
-        //camara picking logic
-        final ImagePicker picker = ImagePicker();
-        final result = await picker.pickImage(source: ImageSource.camera);
-        if (result != null) {
-          tempPaths = [result.path];
+        //camera picking logic fallback to single image pick via FilePicker
+        FilePickerResult? result = await FilePicker.platform.pickFiles(
+          allowMultiple: false,
+          type: FileType.custom,
+          allowedExtensions: ['jpg', 'jpeg', 'png', 'heic', 'webp'],
+        );
+        if (result != null && result.files.isNotEmpty) {
+          final path = result.files.first.path;
+          if (path != null && path.isNotEmpty) {
+            tempPaths = [path];
+          }
         }
       }
-      int totalNumberOfFilesRemovedBecauseOfMaxNumberLimit = 0;
       int totalNumberOfFilesRemovedBecauseOfMaxSizeLimit = 0;
+      int totalNumberOfFilesRemovedBecauseOfMaxNumberLimit = 0;
       for (int i = 0; i < tempPaths.length; i++) {
         if (!selectedFilePaths.contains(tempPaths[i])) {
           //add if already not added the same file with size and total count validations

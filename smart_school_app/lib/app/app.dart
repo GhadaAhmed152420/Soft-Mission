@@ -10,12 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'package:eschool/app/appLocalization.dart';
 import 'package:eschool/app/routes.dart';
-
 import 'package:eschool/cubits/appConfigurationCubit.dart';
 import 'package:eschool/cubits/appLocalizationCubit.dart';
 import 'package:eschool/cubits/authCubit.dart';
@@ -199,8 +196,7 @@ class _MyAppState extends State<MyApp> {
             navigatorKey: UiUtils.rootNavigatorKey,
             theme: Theme.of(context).copyWith(
               primaryColor: primaryColor,
-              textTheme:
-                  GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+              textTheme: Theme.of(context).textTheme,
               scaffoldBackgroundColor: pageBackgroundColor,
               colorScheme: Theme.of(context).colorScheme.copyWith(
                     primary: primaryColor,

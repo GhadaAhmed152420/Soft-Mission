@@ -213,7 +213,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
                   blurRadius: 10,
                   offset: const Offset(0, 5),
                   color:
-                      Theme.of(context).colorScheme.primary.withOpacity(0.275),
+                      Theme.of(context).colorScheme.primary.withValues(alpha: 0.275),
                 )
               ],
               color: Theme.of(context).colorScheme.primary,
@@ -583,12 +583,13 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: ((didPop) async {
         if (didPop) {
-          return;
+          return null;
         }
         Navigator.of(context).pop(submittedAssignment);
-      },
+        return submittedAssignment;
+      }) as PopInvokedWithResultCallback<dynamic>?,
       child: Scaffold(
         body: Stack(
           children: [

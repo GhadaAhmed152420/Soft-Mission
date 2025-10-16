@@ -346,7 +346,7 @@ class ExamOnlineScreenState extends State<ExamOnlineScreen>
                           ? UiUtils.getColorScheme(context).primary
                           : UiUtils.getColorScheme(context)
                               .primary
-                              .withOpacity(0.5),
+                              .withValues(alpha: 0.5),
                     ),
                     alignment: Alignment.center,
                     child: Icon(

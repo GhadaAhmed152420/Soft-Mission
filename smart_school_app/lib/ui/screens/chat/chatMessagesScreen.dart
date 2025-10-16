@@ -246,7 +246,7 @@ class _ChatMessagesScreenState extends State<ChatMessagesScreen> {
                   ? DateFormat("dd MMMM").format(date)
                   : DateFormat("dd MMM yyyy").format(date),
       style: TextStyle(
-        color: secondaryColor.withOpacity(0.6),
+        color: secondaryColor.withValues(alpha: 0.6),
         fontSize: 12,
       ),
     );
@@ -257,7 +257,7 @@ class _ChatMessagesScreenState extends State<ChatMessagesScreen> {
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: secondaryColor.withOpacity(0.05),
+        color: secondaryColor.withValues(alpha: 0.05),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -294,7 +294,7 @@ class _ChatMessagesScreenState extends State<ChatMessagesScreen> {
         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: secondaryColor.withOpacity(0.05),
+          color: secondaryColor.withValues(alpha: 0.05),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -327,7 +327,7 @@ class _ChatMessagesScreenState extends State<ChatMessagesScreen> {
   Widget _buildAutomaticallyDeleteWarning({required int days}) {
     return Container(
       decoration: BoxDecoration(
-        color: orangeColor.withOpacity(0.1),
+        color: orangeColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.all(8),

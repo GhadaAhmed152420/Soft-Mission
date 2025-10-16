@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'dart:io' as io;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eschool/ui/widgets/customCircularProgressIndicator.dart';
 import 'package:eschool/utils/uiUtils.dart';
@@ -69,11 +68,11 @@ class CustomImageWidget extends StatelessWidget {
                   )
             : imagePath.toLowerCase().endsWith("svg")
                 ? SvgPicture.file(
-                    File(imagePath),
+                    io.File(imagePath),
                     fit: boxFit,
                   )
                 : Image.file(
-                    File(imagePath),
+                    io.File(imagePath),
                     fit: boxFit,
                   );
   }
