@@ -26,7 +26,7 @@ dependencies:
   win32: ^5.4.0
   dio: ^5.4.3+1
   lottie: ^3.1.2
-  showcaseview: ^4.0.1
+  showcaseview: ^5.0.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   equatable: ^2.0.5
